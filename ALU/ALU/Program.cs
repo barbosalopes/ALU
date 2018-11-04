@@ -36,7 +36,7 @@ namespace ALU
                     a = Obter_valor();
                     b = Obter_valor();
                     A = Converte_int_para_bool(a);
-                    B = Converte_int_para_bool(b);
+					B = Converte_int_para_bool(b);
                     Vem1 = false; // valor inicial para teste 					
                     F[2] = false; F[1] = false; F[0] = false; // opcode para porta AND (F2F1F0 = 000)
                     saida = A0.Ativa(A, B, F, Vem1, out Vai1);

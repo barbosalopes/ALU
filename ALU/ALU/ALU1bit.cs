@@ -37,8 +37,13 @@ namespace ALU {
 			Vai1 = false;  // valor provisorio para retorno da Funcao Aritmetica, substituir depois de implementar o Somador completo
 			D0 = false; D1 = false; D2 = false; D4 = false; // valores provisorios na saida decoder 3x8, retirar depois de completar a ALU	 
 
-			if (!F[2] & !F[1] & !F[0]) // teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 000 AND
+			if (!F[2] & !F[1] & !F[0]) {// teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 000 AND
+
+
+
 				D0 = true;
+			}
+				
 
 			if (!F[2] & !F[1] & F[0]) // teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 001 OR
 				D1 = true;
