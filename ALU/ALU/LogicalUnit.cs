@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ALU {
-	class Decodificador {
-
-		
+	class LogicalUnit {
 	}
 }

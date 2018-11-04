@@ -10,10 +10,4 @@ namespace ALU {
 			return (A & B);
 		}
 	}
-
-	public class And3 {
-		public bool Ativa(bool A, bool B, bool C) {
-			return (A & B & C);
-		}
-	}
 }
