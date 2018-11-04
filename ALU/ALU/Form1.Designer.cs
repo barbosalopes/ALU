@@ -28,43 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.input_a = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.input_b = new System.Windows.Forms.MaskedTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+            this.input_op_code = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // maskedTextBox1
+            // input_a
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(56, 71);
-            this.maskedTextBox1.Mask = "00000000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(386, 26);
-            this.maskedTextBox1.TabIndex = 0;
+            this.input_a.Location = new System.Drawing.Point(56, 71);
+            this.input_a.Mask = "00000000";
+            this.input_a.Name = "input_a";
+            this.input_a.Size = new System.Drawing.Size(386, 26);
+            this.input_a.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(52, 48);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 20);
+            this.label1.Size = new System.Drawing.Size(78, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Input 1 (Binary)";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            this.label1.Text = "A (Binary)";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(52, 113);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 20);
+            this.label2.Size = new System.Drawing.Size(78, 20);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Input 2 (Binary)";
+            this.label2.Text = "B (Binary)";
             // 
             // label3
             // 
@@ -75,13 +74,13 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Result";
             // 
-            // maskedTextBox2
+            // input_b
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(57, 136);
-            this.maskedTextBox2.Mask = "00000000";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(386, 26);
-            this.maskedTextBox2.TabIndex = 6;
+            this.input_b.Location = new System.Drawing.Point(57, 136);
+            this.input_b.Mask = "00000000";
+            this.input_b.Name = "input_b";
+            this.input_b.Size = new System.Drawing.Size(386, 26);
+            this.input_b.TabIndex = 6;
             // 
             // button1
             // 
@@ -91,6 +90,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Run";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -100,13 +100,13 @@
             this.textBox1.Size = new System.Drawing.Size(386, 26);
             this.textBox1.TabIndex = 8;
             // 
-            // maskedTextBox3
+            // input_op_code
             // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(56, 207);
-            this.maskedTextBox3.Mask = "000";
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(386, 26);
-            this.maskedTextBox3.TabIndex = 10;
+            this.input_op_code.Location = new System.Drawing.Point(56, 207);
+            this.input_op_code.Mask = "000";
+            this.input_op_code.Name = "input_op_code";
+            this.input_op_code.Size = new System.Drawing.Size(386, 26);
+            this.input_op_code.TabIndex = 10;
             // 
             // label4
             // 
@@ -122,15 +122,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(506, 376);
-            this.Controls.Add(this.maskedTextBox3);
+            this.Controls.Add(this.input_op_code);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.maskedTextBox2);
+            this.Controls.Add(this.input_b);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.input_a);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -140,14 +140,14 @@
 
         #endregion
 
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox input_a;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.MaskedTextBox input_b;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
+        private System.Windows.Forms.MaskedTextBox input_op_code;
         private System.Windows.Forms.Label label4;
     }
 }
