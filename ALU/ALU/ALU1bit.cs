@@ -16,6 +16,9 @@ namespace ALU {
 		And P4a = new And(); // HABILITA XOR
 		And P5 = new And(); // HABILITA NOT
 		Or8 P7 = new Or8(); // A | B | C | D | E | F | G | H 
+		protected Adder A1 = new Adder();
+		protected Decoder decoder= new Decoder();
+		protected LogicalUnit L1 = new LogicalUnit();
 
 		/*		
                  OPCODES
@@ -30,67 +33,15 @@ namespace ALU {
                 1	1	1	A = B
         */
 
-		public int Ativa(bool A, bool B, bool[] F, bool Vem1, out bool Vai1) {
-			bool D0, D1, D2, M0, M1, M2, M3, M4, M5, S;
+		public int Ativa(bool A, bool B,bool F0, bool F1, bool F2, bool Vem1, out bool Vai1,bool CarryIn,bool CarryOut) {
+			bool D0, D1, D2, M0, M1, M2, M3, M4, M5, M6, M7, S;
 			bool D4, M1a, M4a;
 			int saida;
 			Vai1 = false;  // valor provisorio para retorno da Funcao Aritmetica, substituir depois de implementar o Somador completo
-			D0 = false; D1 = false; D2 = false; D4 = false; // valores provisorios na saida decoder 3x8, retirar depois de completar a ALU	 
+			D0 = false; D1 = false; D2 = false;  D4 = false; // valores provisorios na saida decoder 3x8, retirar depois de completar a ALU	 
 
-			if (!F[2] & !F[1] & !F[0]) {// teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 000 AND
+			decoder.Run(A, B, F0, F1, F2, CarryIn, CarryOut);
 
-				return A && B;
-
-				D0 = true;
-			}
-
-
-			if (!F[2] & !F[1] & F[0]) {// teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 001 OR
-
-				return A || B;
-
-				D1 = true;
-			}
-			if (!F[2] & F[1] & !F[0]) { // teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 010 XOR 
-
-				return ^ A; 
-
-				D2 = true;
-			}
-			if (!F[2] & F[1] & F[0]) { // teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 011 NOT(A)	
-
-				return !A;
-			}
-
-			if (F[2] & !F[1] & !F[0]) {// teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 100 NOT(B) 
-
-				return !B;
-				D4 = true;
-			}
-
-			if (F[2] & !F[1] & F[0]) { // teste provisorio, retirar depois de completar a ALU	
-				Console.WriteLine("\nOpode F2F1F0 = 101 nao implementado - Digite qualquer tecla para para voltar ao menu.");
-				Console.WriteLine("----------------------------------------------");
-				Console.ReadKey();
-				saida = -1;
-				return saida;
-			}
-
-			if (F[2] & F[1] & !F[0]) { // teste provisorio, retirar depois de completar a ALU	
-				Console.WriteLine("\nOpode F2F1F0 = 110 nao implementado - Digite qualquer tecla para para voltar ao menu.");
-				Console.WriteLine("----------------------------------------------");
-				Console.ReadKey();
-				saida = -1;
-				return saida;
-			}
-
-			if (F[2] & F[1] & F[0]) { // teste provisorio, retirar depois de completar a ALU	
-				Console.WriteLine("\nOpode F2F1F0 = 111 nao implementado - Digite qualquer tecla para para voltar ao menu.");
-				Console.WriteLine("----------------------------------------------");
-				Console.ReadKey();
-				saida = -1;
-				return saida;
-			}
 			M0 = P0.Ativa(A, B); // Funcao Logica AND(A,B) - F2F1F0 = 000	
 			M1 = P1.Ativa(A, B); // Funcao Logica OR(A,B) - F2F1F0 = 001
 			M1a = P1a.Ativa(A, B); // Funcao Logica XOR(A,B) - F2F1F0 = 010
