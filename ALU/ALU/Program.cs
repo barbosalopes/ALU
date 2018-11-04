@@ -19,7 +19,7 @@ namespace ALU
             bool[] F = new bool[3]; // OPCODE: F2F1F0 			
 
             Menu();
-			ALU1bit_parcial A0 = new ALU1bit_parcial();
+			ALU1bit A0 = new ALU1bit();
             for (opcao = -1; opcao != 8;)
             {
                 Menu();
