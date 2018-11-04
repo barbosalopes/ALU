@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ALU {
-	public class Or {
-		public bool Ativa(bool A, bool B) {
-			return (A | B);
-		}
-	}
-
+namespace ALU
+{
+    class Not
+    {
+        public bool Ativa(bool A)
+        {
+            return (!A);
+        }
+    }
 }

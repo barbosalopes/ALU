@@ -37,25 +37,36 @@ namespace ALU {
 			Vai1 = false;  // valor provisorio para retorno da Funcao Aritmetica, substituir depois de implementar o Somador completo
 			D0 = false; D1 = false; D2 = false; D4 = false; // valores provisorios na saida decoder 3x8, retirar depois de completar a ALU	 
 
-			if (!F[2] & !F[1] & !F[0]) // teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 000 AND
+			if (!F[2] & !F[1] & !F[0]) {// teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 000 AND
+
+				return A && B;
+
 				D0 = true;
-
-			if (!F[2] & !F[1] & F[0]) // teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 001 OR
-				D1 = true;
-
-			if (!F[2] & F[1] & !F[0]) // teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 010 XOR 
-				D2 = true;
-
-			if (!F[2] & F[1] & F[0]) { // teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 011 NOT(A)	
-				Console.WriteLine("\nOpode F2F1F0 = 011 nao implementado - Digite qualquer tecla para para voltar ao menu.");
-				Console.WriteLine("----------------------------------------------");
-				Console.ReadKey();
-				saida = -1;
-				return saida;
 			}
 
-			if (F[2] & !F[1] & !F[0]) // teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 100 NOT(B) 
+
+			if (!F[2] & !F[1] & F[0]) {// teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 001 OR
+
+				return A || B;
+
+				D1 = true;
+			}
+			if (!F[2] & F[1] & !F[0]) { // teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 010 XOR 
+
+				return ^ A; 
+
+				D2 = true;
+			}
+			if (!F[2] & F[1] & F[0]) { // teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 011 NOT(A)	
+
+				return !A;
+			}
+
+			if (F[2] & !F[1] & !F[0]) {// teste provisorio, retirar depois de completar a ALU - Opode F2F1F0 = 100 NOT(B) 
+
+				return !B;
 				D4 = true;
+			}
 
 			if (F[2] & !F[1] & F[0]) { // teste provisorio, retirar depois de completar a ALU	
 				Console.WriteLine("\nOpode F2F1F0 = 101 nao implementado - Digite qualquer tecla para para voltar ao menu.");

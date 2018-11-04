@@ -14,12 +14,17 @@ namespace ALU
         [STAThread]
         static void Main()
         {
-			int opcao, a, b, saida;
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
+            return;
+
+            int opcao, a, b, saida;
             bool A, B, S, Vem1, Vai1;
             bool[] F = new bool[3]; // OPCODE: F2F1F0 			
 
             Menu();
-			ALU1bit_parcial A0 = new ALU1bit_parcial();
+			ALU1bit A0 = new ALU1bit();
             for (opcao = -1; opcao != 8;)
             {
                 Menu();
@@ -31,7 +36,7 @@ namespace ALU
                     a = Obter_valor();
                     b = Obter_valor();
                     A = Converte_int_para_bool(a);
-                    B = Converte_int_para_bool(b);
+					B = Converte_int_para_bool(b);
                     Vem1 = false; // valor inicial para teste 					
                     F[2] = false; F[1] = false; F[0] = false; // opcode para porta AND (F2F1F0 = 000)
                     saida = A0.Ativa(A, B, F, Vem1, out Vai1);
@@ -143,9 +148,7 @@ namespace ALU
                     Console.ReadKey();
                 }
             }
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            
         }
 		static void Menu()
         {

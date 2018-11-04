@@ -28,74 +28,109 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.input_a = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.input_b = new System.Windows.Forms.MaskedTextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.input_op_code = new System.Windows.Forms.MaskedTextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // maskedTextBox1
+            // input_a
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(56, 71);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(386, 26);
-            this.maskedTextBox1.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(56, 136);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(386, 26);
-            this.textBox1.TabIndex = 1;
+            this.input_a.Location = new System.Drawing.Point(56, 71);
+            this.input_a.Mask = "00000000";
+            this.input_a.Name = "input_a";
+            this.input_a.Size = new System.Drawing.Size(386, 26);
+            this.input_a.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(52, 48);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 20);
+            this.label1.Size = new System.Drawing.Size(78, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Input 1 (Binary)";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            this.label1.Text = "A (Binary)";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(52, 113);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 20);
+            this.label2.Size = new System.Drawing.Size(78, 20);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Input 2 (Binary)";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(56, 206);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(386, 26);
-            this.textBox2.TabIndex = 4;
+            this.label2.Text = "B (Binary)";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(52, 183);
+            this.label3.Location = new System.Drawing.Point(52, 273);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "Result";
             // 
+            // input_b
+            // 
+            this.input_b.Location = new System.Drawing.Point(57, 136);
+            this.input_b.Mask = "00000000";
+            this.input_b.Name = "input_b";
+            this.input_b.Size = new System.Drawing.Size(386, 26);
+            this.input_b.TabIndex = 6;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(349, 253);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(93, 37);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Run";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(56, 296);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(386, 26);
+            this.textBox1.TabIndex = 8;
+            // 
+            // input_op_code
+            // 
+            this.input_op_code.Location = new System.Drawing.Point(56, 207);
+            this.input_op_code.Mask = "000";
+            this.input_op_code.Name = "input_op_code";
+            this.input_op_code.Size = new System.Drawing.Size(386, 26);
+            this.input_op_code.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(51, 184);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(160, 20);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "OP Code (F2, F1, F0)";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(501, 310);
+            this.ClientSize = new System.Drawing.Size(506, 376);
+            this.Controls.Add(this.input_op_code);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.input_b);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.input_a);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -105,12 +140,15 @@
 
         #endregion
 
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.MaskedTextBox input_a;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.MaskedTextBox input_b;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.MaskedTextBox input_op_code;
+        private System.Windows.Forms.Label label4;
     }
 }
 
