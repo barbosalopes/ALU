@@ -14,7 +14,12 @@ namespace ALU
         [STAThread]
         static void Main()
         {
-			int opcao, a, b, saida;
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
+            return;
+
+            int opcao, a, b, saida;
             bool A, B, S, Vem1, Vai1;
             bool[] F = new bool[3]; // OPCODE: F2F1F0 			
 
@@ -143,9 +148,7 @@ namespace ALU
                     Console.ReadKey();
                 }
             }
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            
         }
 		static void Menu()
         {

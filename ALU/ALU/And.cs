@@ -16,11 +16,4 @@ namespace ALU {
 			return (A & B & C);
 		}
 	}
-
-	public class Not {
-		public bool Ativa(bool A) {
-			return (!A);
-		}
-	}
-
 }
