@@ -24,9 +24,8 @@ namespace ALU
 
         }
 
-        public bool Run(bool F0)
+        public bool Run(bool[] A, bool[] B, bool F0)
         {
-            
             return false;
         }
     }
