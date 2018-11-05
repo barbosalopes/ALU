@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ALU1bit.cs" />
+    <Compile Include="ALU23bits.cs" />
+    <Compile Include="ALU32bits.cs" />
     <Compile Include="ALU8bits.cs" />
     <Compile Include="And.cs" />
     <Compile Include="And3.cs" />
