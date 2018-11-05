@@ -6,23 +6,21 @@ using System.Threading.Tasks;
 
 namespace ALU {
 	class LogicalUnit {
-        And P0 = new And();
+        And3 P0 = new And3();
         And P1 = new And();
         Or P2 = new Or();
-        And P3 = new And(); 
         Not P4 = new Not();
-        And P5 = new And();
-        Not P6 = new Not();
-        And P7 = new And();
 
          public bool[] Run(bool a, bool b, bool[] decoderOutput)
          {
-            bool[] arradevolta = new bool[4];
-            arradevolta[0] = decoderOutput[0] && a && b;
-            arradevolta[1] = decoderOutput[1] && a || b;
-            arradevolta[2] = decoderOutput[2] && !a;
-            arradevolta[3] = decoderOutput[3] && !b;
-            return arradevolta;
+            bool[] arraydevolta = new bool[4];
+
+            arraydevolta[0] = P0.Ativa(decoderOutput[0], a, b);
+            arraydevolta[1] = P2.Ativa(P2.Ativa(decoderOutput[1], a), b);
+            arraydevolta[2] = P1.Ativa(decoderOutput[2], P4.Ativa(a));
+            arraydevolta[3] = P1.Ativa(decoderOutput[3], P4.Ativa(!b));
+
+            return arraydevolta;
          }
 	}
 }
