@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.input_a = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,6 +38,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.input_op_code = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.tooltip_op_code = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // input_a
@@ -107,6 +109,8 @@
             this.input_op_code.Name = "input_op_code";
             this.input_op_code.Size = new System.Drawing.Size(386, 26);
             this.input_op_code.TabIndex = 10;
+            this.tooltip_op_code.SetToolTip(this.input_op_code, "F2 F1 F0 Exit\r\n0   0   0  A AND B\r\n0   0   1  A OR B\r\n0   1   0  A\'\r\n0   1   1  B" +
+        "\'\r\n1   0   0  A + B\r\n1   0   1  A - B\r\n1   1   0  –\r\n1   1   1  –");
             // 
             // label4
             // 
@@ -116,6 +120,14 @@
             this.label4.Size = new System.Drawing.Size(160, 20);
             this.label4.TabIndex = 9;
             this.label4.Text = "OP Code (F2, F1, F0)";
+            // 
+            // tooltip_op_code
+            // 
+            this.tooltip_op_code.AutomaticDelay = 0;
+            this.tooltip_op_code.AutoPopDelay = 100000;
+            this.tooltip_op_code.InitialDelay = 500;
+            this.tooltip_op_code.ReshowDelay = 100;
+            this.tooltip_op_code.ToolTipTitle = "OP Codes";
             // 
             // Form1
             // 
@@ -132,7 +144,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.input_a);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "ALU";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,6 +161,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.MaskedTextBox input_op_code;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolTip tooltip_op_code;
     }
 }
 

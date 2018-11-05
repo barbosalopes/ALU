@@ -7,53 +7,38 @@ using System.Threading.Tasks;
 namespace ALU {
 	class ALU1bit {
 
-		And P0 = new And(); // A & B
-		Or P1 = new Or(); // A | B
-		Xor P1a = new Xor(); // A xor B 
-		Not P2 = new Not(); // ~B	
-		And P3 = new And(); // HABILITA AND	
-		And P4 = new And(); // HABILITA OR
-		And P4a = new And(); // HABILITA XOR
-		And P5 = new And(); // HABILITA NOT
-		Or8 P7 = new Or8(); // A | B | C | D | E | F | G | H 
-		protected Adder A1 = new Adder();
-		protected Decoder decoder= new Decoder();
-		protected LogicalUnit L1 = new LogicalUnit();
+        protected LogicalUnit LU = new LogicalUnit();
+        protected Decoder DE = new Decoder();
+        protected Adder AD = new Adder();
 
-		/*		
-                 OPCODES
-                F2	F1	F0	Saída
-                0	0	0	A AND B
-                0	0	1	A OR B
-                0	1	0	A XOR B
-                0	1	1	A'
-                1	0	0	B'
-                1	0	1	A Plus B 
-                1	1	0	A - B
-                1	1	1	A = B
-        */
+        protected Or4 P0 = new Or4();
+        protected Or P1 = new Or();
 
-		public int Ativa(bool A, bool B,bool F0, bool F1, bool F2, bool Vem1, out bool Vai1,bool CarryIn,bool CarryOut) {
-			bool D0, D1, D2, M0, M1, M2, M3, M4, M5, M6, M7, S;
-			bool D4, M1a, M4a;
-			int saida;
-			Vai1 = false;  // valor provisorio para retorno da Funcao Aritmetica, substituir depois de implementar o Somador completo
-			D0 = false; D1 = false; D2 = false;  D4 = false; // valores provisorios na saida decoder 3x8, retirar depois de completar a ALU	 
+		public bool Run(bool A, bool B, bool F0, bool F1, bool F2, bool carryIn, out bool carryOut) {
 
-			decoder.Run(A, B, F0, F1, F2, CarryIn, CarryOut);
+            bool M0, Output;
 
-			M0 = P0.Ativa(A, B); // Funcao Logica AND(A,B) - F2F1F0 = 000	
-			M1 = P1.Ativa(A, B); // Funcao Logica OR(A,B) - F2F1F0 = 001
-			M1a = P1a.Ativa(A, B); // Funcao Logica XOR(A,B) - F2F1F0 = 010
-			M2 = P2.Ativa(B); // Funcao Logica Not (B)  - F2F1F0 = 100
-			M3 = P3.Ativa(M0, D0); // Habilita saida funcao logica AND(A,B) 
-			M4 = P4.Ativa(M1, D1); // Habilita saida funcao logica OR(A,B)
-			M4a = P4a.Ativa(M1a, D2); // Habilita saida funcao logica XOR(A,B)
-			M5 = P5.Ativa(M2, D4); // Habilita saida funcao logica NOT(B) -  Not (B)  - F2F1F0 = 100
-			S = P7.Ativa(M3, M4, M4a, false, M5, false, false, false);
-			if (S) saida = 1;
-			else saida = 0;
-			return saida;
+            bool[] RDE = new bool[8];
+            RDE = DE.Run(F0, F1, F2);
+
+            bool[] RLU = new bool[4];
+            bool[] ILU = new bool[4];
+            ILU[0] = RDE[0];
+            ILU[1] = RDE[1];
+            ILU[2] = RDE[2];
+            ILU[3] = RDE[3];
+            RLU = LU.Run(A, B, ILU);
+
+            bool RAD;
+            bool[] IAD = new bool[2];
+            IAD[0] = RDE[4];
+            IAD[1] = RDE[5];
+            RAD = AD.Run(A, B, IAD, carryIn, out carryOut);
+
+            M0 = P0.Ativa(RLU[0], RLU[1], RLU[2], RLU[3]);
+            Output = P1.Ativa(RAD, M0);
+
+            return Output;
 		}
 	}
 }
