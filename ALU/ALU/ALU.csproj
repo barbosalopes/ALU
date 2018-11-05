@@ -52,6 +52,7 @@
     <Compile Include="ALU8bits.cs" />
     <Compile Include="And.cs" />
     <Compile Include="And3.cs" />
+    <Compile Include="Conversor.cs" />
     <Compile Include="Decoder.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
