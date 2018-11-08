@@ -14,10 +14,10 @@ namespace ALU
         [STAThread]
         static void Main()
         {
-            ALU8bits alu8 = new ALU8bits();
+            ALU1bit alu1 = new ALU1bit();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1(alu8));
+            Application.Run(new Form1(alu1));
             return;
         }
     }

@@ -7,6 +7,7 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -35,7 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.input_b = new System.Windows.Forms.MaskedTextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.result = new System.Windows.Forms.TextBox();
             this.input_op_code = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tooltip_op_code = new System.Windows.Forms.ToolTip(this.components);
@@ -44,7 +45,7 @@
             // input_a
             // 
             this.input_a.Location = new System.Drawing.Point(56, 71);
-            this.input_a.Mask = "00000000";
+            this.input_a.Mask = "0";
             this.input_a.Name = "input_a";
             this.input_a.Size = new System.Drawing.Size(386, 26);
             this.input_a.TabIndex = 0;
@@ -79,7 +80,7 @@
             // input_b
             // 
             this.input_b.Location = new System.Drawing.Point(57, 136);
-            this.input_b.Mask = "00000000";
+            this.input_b.Mask = "0";
             this.input_b.Name = "input_b";
             this.input_b.Size = new System.Drawing.Size(386, 26);
             this.input_b.TabIndex = 6;
@@ -94,13 +95,13 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // result
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(56, 296);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(386, 26);
-            this.textBox1.TabIndex = 8;
+            this.result.Enabled = false;
+            this.result.Location = new System.Drawing.Point(56, 296);
+            this.result.Name = "result";
+            this.result.Size = new System.Drawing.Size(386, 26);
+            this.result.TabIndex = 8;
             // 
             // input_op_code
             // 
@@ -136,7 +137,7 @@
             this.ClientSize = new System.Drawing.Size(506, 376);
             this.Controls.Add(this.input_op_code);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.result);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.input_b);
             this.Controls.Add(this.label3);
@@ -158,7 +159,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.MaskedTextBox input_b;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox result;
         private System.Windows.Forms.MaskedTextBox input_op_code;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolTip tooltip_op_code;

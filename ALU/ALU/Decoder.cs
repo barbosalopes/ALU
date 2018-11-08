@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ALU {
-	class Decoder {
+	public class Decoder {
 
         protected Not P0 = new Not();
         protected Not P1 = new Not();

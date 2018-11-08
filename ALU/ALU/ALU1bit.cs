@@ -5,14 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ALU {
-	class ALU1bit {
+	public class ALU1bit {
 
-        protected LogicalUnit LU = new LogicalUnit();
-        protected Decoder DE = new Decoder();
-        protected Adder AD = new Adder();
+        public ALU1bit()
+        {
+            LU = new LogicalUnit();
+            DE = new Decoder();
+            AD = new Adder();
+            P0 = new Or4();
+            P1 = new Or();
+        }
 
-        protected Or4 P0 = new Or4();
-        protected Or P1 = new Or();
+        protected LogicalUnit LU;
+        protected Decoder DE;
+        protected Adder AD;
+
+        protected Or4 P0;
+        protected Or P1;
 
 		public bool Run(bool A, bool B, bool F0, bool F1, bool F2, bool carryIn, out bool carryOut) {
 

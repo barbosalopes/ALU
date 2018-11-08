@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ALU {
-	class Adder {
+	public class Adder {
 
         protected Xor P0 = new Xor();
         protected Xor P1 = new Xor();

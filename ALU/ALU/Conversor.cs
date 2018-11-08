@@ -119,5 +119,29 @@ namespace ALU
             
         }
         */
+
+        public static bool[] ConvertSringToBool(string value)
+        {
+            bool[] valueToReturn = new bool[value.Length];
+
+            for(int i = 0; i < value.Length; i++)
+            {
+                valueToReturn[i] = value[i] == '1';
+            }
+
+            return valueToReturn;
+        }
+
+        public static string ConvertBoolToString(bool[] value)
+        {
+            string valueToReturn = "";
+
+            for (int i = 0; i < value.Length; i++)
+            {
+                valueToReturn += value[i] == true ? '1' : '0';
+            }
+
+            return valueToReturn;
+        }
     }
 }

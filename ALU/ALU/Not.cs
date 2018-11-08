@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ALU
 {
-    class Not
+    public class Not
     {
         public bool Ativa(bool A)
         {

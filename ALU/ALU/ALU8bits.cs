@@ -5,10 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ALU {
-	class ALU8bits {
+	public class ALU8bits {
 
-        private ALU1bit[] alu8 = new ALU1bit[8];
-        
+        private ALU1bit[] alu8;
+
+        public ALU8bits()
+        {
+            alu8 = new ALU1bit[8];
+            for(int i = 0; i < 8; i++)
+            {
+                alu8[i] = new ALU1bit();
+            }
+        }
+
         public bool[] Run(bool[]a, bool[]b,bool f0, bool f1, bool f2, bool CarryIn, out bool CarryOut)
         {
             bool ci = CarryIn; 
