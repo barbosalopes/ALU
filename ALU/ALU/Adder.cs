@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace ALU {
 	public class Adder {
 
+        /*
         protected Xor P0 = new Xor();
         protected Xor P1 = new Xor();
         protected Xor P2 = new Xor();
@@ -14,10 +15,32 @@ namespace ALU {
         protected And P4 = new And();
         protected Or P5 = new Or();
         protected Or P6 = new Or();
-        protected And P7 = new And();
+        protected And P7 = new And();*/
+
+        //https://www.embarcados.com.br/wp-content/uploads/2015/11/adder-5.png
+        protected Xor P1 = new Xor();
+        protected Xor P2 = new Xor();
+        protected And P3 = new And();
+        protected And P4 = new And();
+        protected Or P5 = new Or();
+
+        //To define if the value should be passed 
+        protected And P6 = new And();
 
         public bool Run(bool A, bool B, bool[] decoderOutput, bool carryIn, out bool carryOut)
         {
+            bool sum;
+
+            bool R1 = P1.Ativa(A, B);
+            sum = P2.Ativa(carryIn, R1);
+
+            bool R2 = P3.Ativa(A, B);
+            bool R3 = P4.Ativa(carryIn, R1);
+            carryOut = P5.Ativa(R2, R3);
+
+            return P6.Ativa(sum, decoderOutput[0]);
+
+            /*
             bool M0, M1, M2, M3, M4, M5, M6, SUM, D0, D1, D3;
 
             D0 = decoderOutput[0];
@@ -36,19 +59,20 @@ namespace ALU {
             SUM = M1;
             carryOut = M6;
 
-            return SUM;
+            return SUM; */
         }
+        /*
 
-        public bool Ativa(bool A, bool B, bool Vem1, out bool Vai1)
-        {
-
-            bool M0, M1, M2, SOMA;
-            M0 = P0.Ativa(A, B);
-            M1 = P3.Ativa(A, B);
-            M2 = P1.Ativa(M1, Vem1);
-            Vai1 = P2.Ativa(M0, M2);
-            SOMA = P4.Ativa(M1, Vem1);
-            return (SOMA);
-        }
+    public bool Ativa(bool A, bool B, bool Vem1, out bool Vai1)
+    {
+        bool M0, M1, M2, SOMA;
+        M0 = P0.Ativa(A, B);
+        M1 = P3.Ativa(A, B);
+        M2 = P1.Ativa(M1, Vem1);
+        Vai1 = P2.Ativa(M0, M2);
+        SOMA = P4.Ativa(M1, Vem1);
+        return (SOMA);
+    }
+        */
     }
 }

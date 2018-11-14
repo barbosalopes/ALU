@@ -40,12 +40,13 @@
             this.input_op_code = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tooltip_op_code = new System.Windows.Forms.ToolTip(this.components);
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // input_a
             // 
             this.input_a.Location = new System.Drawing.Point(56, 71);
-            this.input_a.Mask = "0";
+            this.input_a.Mask = "00000000";
             this.input_a.Name = "input_a";
             this.input_a.Size = new System.Drawing.Size(386, 26);
             this.input_a.TabIndex = 0;
@@ -80,7 +81,7 @@
             // input_b
             // 
             this.input_b.Location = new System.Drawing.Point(57, 136);
-            this.input_b.Mask = "0";
+            this.input_b.Mask = "00000000";
             this.input_b.Name = "input_b";
             this.input_b.Size = new System.Drawing.Size(386, 26);
             this.input_b.TabIndex = 6;
@@ -130,11 +131,23 @@
             this.tooltip_op_code.ReshowDelay = 100;
             this.tooltip_op_code.ToolTipTitle = "OP Codes";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(464, 71);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(144, 200);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "OP Codes\r\nF2 F1 F0 Exit\r\n0   0   0     A AND B\r\n0   0   1     A OR B\r\n0   1   0  " +
+    "   A\'\r\n0   1   1     B\'\r\n1   0   0     A + B\r\n1   0   1     A - B\r\n1   1   0    " +
+    " –\r\n1   1   1     –";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(506, 376);
+            this.ClientSize = new System.Drawing.Size(672, 376);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.input_op_code);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.result);
@@ -163,6 +176,7 @@
         private System.Windows.Forms.MaskedTextBox input_op_code;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolTip tooltip_op_code;
+        private System.Windows.Forms.Label label5;
     }
 }
 

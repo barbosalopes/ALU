@@ -12,9 +12,9 @@ namespace ALU
 {
     public partial class Form1 : Form
     {
-        protected ALU1bit alu;
+        protected ALU8bits alu;
 
-        public Form1(ALU1bit alu)
+        public Form1(ALU8bits alu)
         {
             this.alu = alu;
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace ALU
             bool cO;
 
             bool[] res = new bool[1];
-            res[0] = alu.Run(a[0], b[0], f[0], f[1], f[2], false, out cO);
+            res = alu.Run(a, b, f[0], f[1], f[2], false, out cO);
 
             result.Text = Conversor.ConvertBoolToString(res);
         }

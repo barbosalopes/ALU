@@ -18,7 +18,7 @@ namespace ALU {
             arraydevolta[0] = P0.Ativa(decoderOutput[0], a, b);
             arraydevolta[1] = P1.Ativa(P2.Ativa(a, b), decoderOutput[1]);
             arraydevolta[2] = P1.Ativa(decoderOutput[2], P4.Ativa(a));
-            arraydevolta[3] = P1.Ativa(decoderOutput[3], P4.Ativa(!b));
+            arraydevolta[3] = P1.Ativa(decoderOutput[3], P4.Ativa(b));
 
             return arraydevolta;
          }
