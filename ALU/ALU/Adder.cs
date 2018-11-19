@@ -26,40 +26,23 @@ namespace ALU {
 
         //To define if the value should be passed 
         protected And P6 = new And();
+        protected And P7 = new And();
+        protected Or P8 = new Or();
 
         public bool Run(bool A, bool B, bool[] decoderOutput, bool carryIn, out bool carryOut)
         {
-            bool sum;
-
+            bool res, sum, subtraction;
             bool R1 = P1.Ativa(A, B);
-            sum = P2.Ativa(carryIn, R1);
+            res = P2.Ativa(carryIn, R1);
 
             bool R2 = P3.Ativa(A, B);
             bool R3 = P4.Ativa(carryIn, R1);
             carryOut = P5.Ativa(R2, R3);
 
-            return P6.Ativa(sum, decoderOutput[0]);
+            sum = P6.Ativa(res, decoderOutput[0]);
+            subtraction = P7.Ativa(res, decoderOutput[1]);
 
-            /*
-            bool M0, M1, M2, M3, M4, M5, M6, SUM, D0, D1, D3;
-
-            D0 = decoderOutput[0];
-            D1 = decoderOutput[1];
-
-            D3 = P7.Ativa(D0, !D1);
-
-            M0 = P0.Ativa(A, B); // A XOR B
-            M1 = P1.Ativa(M0, carryIn); // M0 XOR carryIn
-            M2 = P2.Ativa(!D3, A); // decoderOutput XOR A
-            M3 = P3.Ativa(carryIn, B); // carryIn AND B
-            M4 = P5.Ativa(B, !D3); // B OR decoderOutput
-            M5 = P4.Ativa(M2, M4); // M2 AND M4
-            M6 = P6.Ativa(M3, M5); // M3 OR M5
-
-            SUM = M1;
-            carryOut = M6;
-
-            return SUM; */
+            return P8.Ativa(sum, subtraction);
         }
         /*
 

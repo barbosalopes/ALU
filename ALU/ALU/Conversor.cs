@@ -21,7 +21,33 @@ namespace ALU
             Array.Reverse(charArray);
             return new string(charArray);
         }
-        
+
+        /// <summary>
+        /// Converts the number on the given base to decimal.
+        /// </summary>
+        /// <returns>The number in decimal base.</returns>
+        /// <param name="input">Number to be converted.</param>
+        /// <param name="inputBase">Number's base.</param>
+        public static string ConvertBaseToDecimal(string input, int inputBase)
+        {
+            double output = 0, digitValue;
+            int aux = Reverse(input).IndexOf(',');
+            int commaPos = input.IndexOf(',');
+            if (commaPos >= 0)
+                input = input.Remove(commaPos, 1);
+            char[] num = input.ToCharArray();
+            int pos = aux == -1 ? input.Length - 1 : input.Length - aux - 1;
+
+            foreach (char digit in num)
+            {
+                digitValue = ConvertDigitToDecimal(digit, inputBase);
+                output += digitValue * Math.Pow(inputBase, pos);
+                pos--;
+            }
+
+            return output.ToString();
+        }
+
         /// <summary>
         /// Converts the digit to decimal.
         /// </summary>
@@ -106,27 +132,21 @@ namespace ALU
         /// <param name="input">Number to be converted.</param>
         /// <param name="inputBase">Number's base.</param>
         /// <param name="outputBase">Base to be converted.</param>
-        /*
-        public static bool[] ConvertNumber(string input)
+        public static string ConvertNumber(string input, int inputBase, int outputBase)
         {
-            double inputNumber = double.Parse(input);
-            string convertedNumber = ConvertDecimalTo(input, 2);
-            
-            bool[] number = new bool[32];
-
-            // Se o numero for negativo o bit de sinal eh 1
-            number[0] = inputNumber < 0;
-            
+            if (inputBase == 10)
+                return ConvertDecimalTo(input, outputBase);
+            else
+                return ConvertDecimalTo(ConvertBaseToDecimal(input, inputBase), outputBase);
         }
-        */
 
-        public static bool[] ConvertSringToBool(string value)
+        public static bool[] ConvertSringToBool(string value, int wordSize)
         {
-            bool[] valueToReturn = new bool[value.Length];
+            bool[] valueToReturn = new bool[wordSize];
 
-            for(int i = 0; i < value.Length; i++)
+            for(int i = value.Length - 1; i >= 0; i--)
             {
-                valueToReturn[i] = value[i] == '1';
+                valueToReturn[i] = value[value.Length - i - 1] == '1';
             }
 
             return valueToReturn;
@@ -136,11 +156,33 @@ namespace ALU
         {
             string valueToReturn = "";
 
-            for (int i = 0; i < value.Length; i++)
+            for (int i = value.Length - 1; i >= 0; i--)
             {
                 valueToReturn += value[i] == true ? '1' : '0';
             }
 
+            return valueToReturn;
+        }
+
+        public static bool[] ConvertBoolToNegativeBool(bool[] value)
+        {
+            if(value.Length != 23)
+                throw new Exception("Value given must be have a word of length 23");
+
+            bool[] valueToReturn = new bool[23];
+
+            for(int i = 0; i < value.Length; i++)
+            {
+                valueToReturn[i] = !value[i];
+            }
+
+            bool[] numToSum = new bool[23];
+            numToSum[0] = true;
+            bool[] opCode = { false, false, true };
+
+            bool ca;
+            ALU23bits aluAux = new ALU23bits();
+            valueToReturn = aluAux.Run(valueToReturn, numToSum, opCode[0], opCode[1], opCode[2], false, out ca);
             return valueToReturn;
         }
     }

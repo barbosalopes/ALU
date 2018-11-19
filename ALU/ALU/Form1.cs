@@ -12,9 +12,9 @@ namespace ALU
 {
     public partial class Form1 : Form
     {
-        protected ALU8bits alu;
+        protected ALU23bits alu;
 
-        public Form1(ALU8bits alu)
+        public Form1(ALU23bits alu)
         {
             this.alu = alu;
             InitializeComponent();
@@ -23,17 +23,21 @@ namespace ALU
 
         private void button1_Click(object sender, EventArgs e)
         {
-            bool[] a = Conversor.ConvertSringToBool(input_a.Text);
-            bool[] b = Conversor.ConvertSringToBool(input_b.Text);
-            bool[] f = Conversor.ConvertSringToBool(input_op_code.Text);
+            int bitsAmount = 23;
+            bool[] a = Conversor.ConvertSringToBool(Conversor.ConvertDecimalTo(input_a.Text, 2), bitsAmount);
+            bool[] b = Conversor.ConvertSringToBool(Conversor.ConvertDecimalTo(input_b.Text, 2), bitsAmount);
+            bool[] f = Conversor.ConvertSringToBool(input_op_code.Text, 3);
 
             bool cO;
 
-            bool[] res = new bool[1];
+            bool[] res = new bool[bitsAmount];
             res = alu.Run(a, b, f[0], f[1], f[2], false, out cO);
 
-            result.Text = Conversor.ConvertBoolToString(res);
+            a_binary.Text = Conversor.ConvertBoolToString(a);
+            b_binary.Text = Conversor.ConvertBoolToString(b);
+            result_binary.Text = Conversor.ConvertBoolToString(res);
+            result_decimal.Text = Conversor.ConvertBaseToDecimal(result_binary.Text, 2);
         }
-
+        
     }
 }

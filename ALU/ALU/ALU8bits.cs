@@ -22,7 +22,7 @@ namespace ALU {
         {
             bool ci = CarryIn; 
             bool[] output = new bool[8];
-            for(int i= a.Length-1; i >= 0; i--)
+            for(int i= 0; i < a.Length; i++)
             {
                 output[i] = alu8[i].Run(a[i], b[i], f0, f1, f2, ci, out CarryOut);
                 ci = CarryOut;   

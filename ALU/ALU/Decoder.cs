@@ -19,7 +19,7 @@ namespace ALU {
         protected And3 P9 = new And3();
         protected And3 P10 = new And3();
 
-        public bool[] Run (bool A, bool B, bool C)
+        public bool[] Run (bool C, bool B, bool A)
         {
             bool D0, D1, D2, D3, D4, D5, D6, D7;
 
